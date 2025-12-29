@@ -1,0 +1,174 @@
+{
+  "splash": {
+    "title": "Code Vimarsh",
+    "tagline": "Inspire. Create. Code.",
+    "loadingText": "Initializing..."
+  },
+  "navbar": {
+    "brand": "Code Vimarsh",
+    "links": [
+      { "label": "Home", "href": "/" },
+      { "label": "Events", "href": "/events" },
+      { "label": "Team", "href": "/team" }
+    ]
+  },
+  "home": {
+    "hero": {
+      "title": "Code Vimarsh",
+      "subtitle": "Where Ideas Transform Into Reality",
+      "description": "A thriving community of passionate developers, innovators, and problem-solvers. We believe in learning together, building together, and growing together.",
+      "cta": {
+        "primary": "Join Our Community",
+        "secondary": "Explore Events"
+      }
+    },
+    "about": {
+      "title": "About Us",
+      "subtitle": "Building Tomorrow's Developers Today",
+      "content": "Code Vimarsh is more than just a coding club—it's a launchpad for innovation. We bring together students from diverse backgrounds united by their passion for technology and programming.",
+      "stats": [
+        { "value": "200+", "label": "Active Members" },
+        { "value": "50+", "label": "Events Hosted" },
+        { "value": "15+", "label": "Projects Built" },
+        { "value": "5+", "label": "Years Strong" }
+      ]
+    },
+    "mission": {
+      "title": "Our Mission",
+      "points": [
+        {
+          "icon": "code",
+          "title": "Learn & Grow",
+          "description": "Master cutting-edge technologies through hands-on workshops, peer learning, and expert sessions."
+        },
+        {
+          "icon": "users",
+          "title": "Collaborate",
+          "description": "Build real-world projects with fellow developers, fostering teamwork and innovation."
+        },
+        {
+          "icon": "rocket",
+          "title": "Innovate",
+          "description": "Transform ideas into impactful solutions through hackathons and coding challenges."
+        },
+        {
+          "icon": "globe",
+          "title": "Connect",
+          "description": "Network with industry professionals, alumni, and the global developer community."
+        }
+      ]
+    },
+    "codeSnippet": {
+      "language": "javascript",
+      "code": "const codeVimarsh = {\n  passion: 'unlimited',\n  members: 'amazing',\n  mission: 'inspire.create.code',\n  \n  build: () => {\n    return innovation + collaboration;\n  }\n};"
+    }
+  },
+  "events": {
+    "title": "Upcoming Events",
+    "subtitle": "Join us in our journey of learning and innovation",
+    "items": [
+      {
+        "id": 1,
+        "title": "Web Development Bootcamp",
+        "date": "January 15, 2025",
+        "time": "10:00 AM - 4:00 PM",
+        "description": "An intensive workshop covering modern web technologies including React, Node.js, and MongoDB. Perfect for beginners looking to build their first full-stack application.",
+        "type": "Workshop",
+        "location": "Tech Lab 101"
+      },
+      {
+        "id": 2,
+        "title": "Code Sprint 2025",
+        "date": "February 8-9, 2025",
+        "time": "24 Hours",
+        "description": "Our flagship hackathon where teams compete to build innovative solutions for real-world problems. Amazing prizes and networking opportunities await!",
+        "type": "Hackathon",
+        "location": "Main Auditorium"
+      },
+      {
+        "id": 3,
+        "title": "AI/ML Workshop Series",
+        "date": "February 22, 2025",
+        "time": "2:00 PM - 6:00 PM",
+        "description": "Dive into the world of Artificial Intelligence and Machine Learning. Learn to build intelligent systems using Python, TensorFlow, and PyTorch.",
+        "type": "Workshop",
+        "location": "Innovation Hub"
+      },
+      {
+        "id": 4,
+        "title": "Open Source Contribution Day",
+        "date": "March 5, 2025",
+        "time": "11:00 AM - 5:00 PM",
+        "description": "Learn how to contribute to open source projects. We'll guide you through your first PR and help you become part of the global developer community.",
+        "type": "Community",
+        "location": "Virtual + In-Person"
+      }
+    ]
+  },
+  "team": {
+    "title": "Meet The Team",
+    "subtitle": "The passionate minds behind Code Vimarsh",
+    "members": [
+      {
+        "id": 1,
+        "name": "Arjun Sharma",
+        "role": "President",
+        "bio": "Full-stack developer with a passion for building scalable applications",
+        "github": "https://github.com",
+        "linkedin": "https://linkedin.com"
+      },
+      {
+        "id": 2,
+        "name": "Priya Patel",
+        "role": "Vice President",
+        "bio": "Machine learning enthusiast focused on NLP and computer vision",
+        "github": "https://github.com",
+        "linkedin": "https://linkedin.com"
+      },
+      {
+        "id": 3,
+        "name": "Rahul Verma",
+        "role": "Technical Lead",
+        "bio": "Backend specialist with expertise in cloud architecture and DevOps",
+        "github": "https://github.com",
+        "linkedin": "https://linkedin.com"
+      },
+      {
+        "id": 4,
+        "name": "Sneha Gupta",
+        "role": "Events Coordinator",
+        "bio": "Creative problem solver who loves organizing impactful tech events",
+        "github": "https://github.com",
+        "linkedin": "https://linkedin.com"
+      },
+      {
+        "id": 5,
+        "name": "Vikram Singh",
+        "role": "Web Lead",
+        "bio": "Frontend developer crafting beautiful and accessible user experiences",
+        "github": "https://github.com",
+        "linkedin": "https://linkedin.com"
+      },
+      {
+        "id": 6,
+        "name": "Ananya Reddy",
+        "role": "Community Manager",
+        "bio": "Building bridges between developers and fostering inclusive communities",
+        "github": "https://github.com",
+        "linkedin": "https://linkedin.com"
+      }
+    ]
+  },
+  "footer": {
+    "brand": "Code Vimarsh",
+    "tagline": "Inspire. Create. Code.",
+    "description": "A community of developers building the future, one line of code at a time.",
+    "socials": [
+      { "platform": "GitHub", "url": "https://github.com" },
+      { "platform": "LinkedIn", "url": "https://linkedin.com" },
+      { "platform": "Instagram", "url": "https://instagram.com" },
+      { "platform": "Discord", "url": "https://discord.com" }
+    ],
+    "copyright": "© 2025 Code Vimarsh. All rights reserved."
+  }
+}
