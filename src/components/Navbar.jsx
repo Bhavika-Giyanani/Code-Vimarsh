@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Code2, Sparkles } from 'lucide-react';
+import { Menu, X, Sparkles } from 'lucide-react';
+import FormModal from './FormModal';
 import content from '../data/content.json';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+    const [showJoinModal, setShowJoinModal] = useState(false);
   const location = useLocation();
   const { navbar } = content;
 
@@ -106,7 +108,8 @@ const Navbar = () => {
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
               />
-              <Code2 className="w-8 h-8 text-primary relative z-10" />
+              {/* <Code2 className="w-8 h-8 text-primary relative z-10" /> */}
+              <img src="/logo.png" alt="Code Vimarsh Logo" className="w-12 h-12 relative z-10" />
             </motion.div>
             
             <motion.span 
@@ -133,7 +136,7 @@ const Navbar = () => {
                     location.pathname === link.href
                       ? 'text-primary'
                       : 'text-muted-foreground hover:text-foreground'
-                  }`}
+                  } font-extrabold`}
                 >
                   <motion.span
                     whileHover={{ y: -2 }}
@@ -170,9 +173,9 @@ const Navbar = () => {
             ))}
             
             {/* CTA Button with enhanced effects */}
-            <motion.a
-              href="#join"
+            <motion.button
               className="relative px-5 py-2 rounded-full bg-gradient-primary text-primary-foreground font-medium text-sm glow-primary overflow-hidden group"
+              onClick={() => setShowJoinModal(true)}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -187,7 +190,7 @@ const Navbar = () => {
               
               {/* Sparkle icon */}
               <motion.span 
-                className="inline-flex items-center gap-1 relative z-10"
+                className="inline-flex items-center gap-1 relative z-10 font-extrabold"
               >
                 Join Us
                 <motion.div
@@ -200,7 +203,7 @@ const Navbar = () => {
                   <Sparkles className="w-3 h-3" />
                 </motion.div>
               </motion.span>
-            </motion.a>
+            </motion.button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -240,7 +243,7 @@ const Navbar = () => {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              className="md:hidden overflow-hidden"
+              className="md:hidden overflow-hidden bg-black"
               variants={mobileMenuVariants}
               initial="closed"
               animate="open"
@@ -274,9 +277,9 @@ const Navbar = () => {
                   </motion.div>
                 ))}
                 
-                <motion.a
-                  href="#join"
+                <motion.button
                   className="mt-2 px-5 py-3 rounded-full bg-gradient-primary text-primary-foreground font-medium text-center relative overflow-hidden group"
+                  onClick={() => setShowJoinModal(true)}
                   custom={navbar.links.length}
                   variants={mobileItemVariants}
                   initial="closed"
@@ -290,7 +293,7 @@ const Navbar = () => {
                     transition={{ duration: 0.6 }}
                   />
                   <span className="relative z-10">Join Us</span>
-                </motion.a>
+                </motion.button>
               </div>
             </motion.div>
           )}
@@ -306,6 +309,13 @@ const Navbar = () => {
           transition={{ duration: 0.6 }}
         />
       )}
+
+      {/* Join Club Modal */}
+      <FormModal
+        isOpen={showJoinModal}
+        onClose={() => setShowJoinModal(false)}
+        type="join-club"
+      />
     </motion.nav>
   );
 };

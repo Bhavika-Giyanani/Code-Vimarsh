@@ -1,12 +1,13 @@
-import { useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import SplashScreen from './components/SplashScreen';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import Events from './pages/Events';
-import Team from './pages/Team';
-import NotFound from './pages/NotFound';
+import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SplashScreen from "./components/SplashScreen";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
+import Home from "./pages/Home";
+import Events from "./pages/Events";
+import Team from "./pages/Team";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
   const [showSplash, setShowSplash] = useState(true);
@@ -18,9 +19,14 @@ const App = () => {
   return (
     <>
       {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
-      
-      <div className={`transition-opacity duration-500 ${showSplash ? 'opacity-0' : 'opacity-100'}`}>
+
+      <div
+        className={`transition-opacity duration-500 ${
+          showSplash ? "opacity-0" : "opacity-100"
+        }`}
+      >
         <BrowserRouter>
+          <ScrollToTop />
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />

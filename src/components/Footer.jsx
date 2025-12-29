@@ -1,6 +1,14 @@
-import { motion } from 'framer-motion';
-import { Github, Linkedin, Instagram, MessageCircle, Code2, Heart } from 'lucide-react';
-import content from '../data/content.json';
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import {
+  Github,
+  Linkedin,
+  Instagram,
+  MessageCircle,
+  // Code2,
+  Heart,
+} from "lucide-react";
+import content from "../data/content.json";
 
 const Footer = () => {
   const { footer } = content;
@@ -16,13 +24,13 @@ const Footer = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.2 }
-    }
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+    },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
+    visible: { opacity: 1, y: 0 },
   };
 
   return (
@@ -44,8 +52,11 @@ const Footer = () => {
           {/* Brand Section */}
           <motion.div variants={itemVariants} className="space-y-4">
             <div className="flex items-center gap-2">
-              <Code2 className="w-8 h-8 text-primary" />
-              <span className="text-2xl font-bold text-gradient">{footer.brand}</span>
+              {/* <Code2 className="w-8 h-8 text-primary" /> */}
+              <img src="/logo.png" alt="Code Vimarsh Logo" className="w-12 h-12 relative z-10" />
+              <span className="text-2xl font-bold text-white">
+                {footer.brand}
+              </span>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
               {footer.description}
@@ -54,29 +65,42 @@ const Footer = () => {
 
           {/* Quick Links */}
           <motion.div variants={itemVariants} className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground">Quick Links</h3>
+            <h3 className="text-lg font-semibold text-foreground">
+              Quick Links
+            </h3>
             <ul className="space-y-2">
               <li>
-                <a href="/" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link
+                  to="/"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/events" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link
+                  to="/events"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
                   Events
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/team" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link
+                  to="/team"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
                   Team
-                </a>
+                </Link>
               </li>
             </ul>
           </motion.div>
 
           {/* Social Links */}
           <motion.div variants={itemVariants} className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground">Connect With Us</h3>
+            <h3 className="text-lg font-semibold text-foreground">
+              Connect With Us
+            </h3>
             <div className="flex gap-3">
               {footer.socials.map((social) => {
                 const Icon = socialIcons[social.platform];
@@ -113,7 +137,8 @@ const Footer = () => {
         >
           <p>{footer.copyright}</p>
           <p className="flex items-center gap-1">
-            Made with <Heart className="w-4 h-4 text-primary fill-primary" /> by Code Vimarsh
+            Made with <Heart className="w-4 h-4 text-primary fill-primary" /> by
+            Code Vimarsh
           </p>
         </motion.div>
       </div>
