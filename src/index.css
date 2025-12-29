@@ -169,3 +169,8 @@
   background: hsl(var(--primary) / 0.3);
   color: hsl(var(--foreground));
 }
+
+
+html {
+  scroll-behavior: smooth;
+}
