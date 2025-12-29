@@ -48,17 +48,22 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         // Code Vimarsh specific colors
-        navy: {
-          deep: "hsl(var(--deep-navy))",
-          DEFAULT: "hsl(var(--navy))",
+        orange: {
+          DEFAULT: "hsl(var(--orange-primary))",
+          light: "hsl(var(--orange-light))",
+          dark: "hsl(var(--orange-dark))",
         },
-        steel: "hsl(var(--steel-blue))",
-        purple: "hsl(var(--purple))",
-        magenta: "hsl(var(--magenta))",
-        coral: "hsl(var(--coral))",
-        orange: "hsl(var(--orange))",
-        amber: "hsl(var(--amber))",
-        gold: "hsl(var(--gold))",
+        gray: {
+          100: "hsl(var(--gray-100))",
+          200: "hsl(var(--gray-200))",
+          300: "hsl(var(--gray-300))",
+          400: "hsl(var(--gray-400))",
+          500: "hsl(var(--gray-500))",
+          600: "hsl(var(--gray-600))",
+          700: "hsl(var(--gray-700))",
+          800: "hsl(var(--gray-800))",
+          900: "hsl(var(--gray-900))",
+        },
       },
       fontFamily: {
         sans: ['Outfit', 'sans-serif'],

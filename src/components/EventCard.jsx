@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 import { Calendar, Clock, MapPin, ArrowRight } from 'lucide-react';
 
-const EventCard = ({ event, index }) => {
+const EventCard = ({ event, index, onRegister }) => {
   const typeColors = {
-    Workshop: 'bg-accent text-accent-foreground',
-    Hackathon: 'bg-primary text-primary-foreground',
-    Community: 'bg-secondary text-secondary-foreground',
+    Workshop: 'bg-primary text-primary-foreground',
+    Hackathon: 'bg-accent text-accent-foreground',
+    Community: 'bg-secondary text-secondary-foreground border border-border',
   };
 
   const cardVariants = {
@@ -29,7 +29,7 @@ const EventCard = ({ event, index }) => {
       transition={{ duration: 0.3 }}
     >
       {/* Gradient overlay on hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       
       {/* Content */}
       <div className="relative p-6 md:p-8">
@@ -74,7 +74,8 @@ const EventCard = ({ event, index }) => {
 
         {/* Register button */}
         <motion.button
-          className="mt-6 w-full py-3 rounded-xl bg-gradient-primary text-primary-foreground font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          onClick={onRegister}
+          className="mt-6 w-full py-3 rounded-xl bg-gradient-primary text-primary-foreground font-semibold text-sm"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >

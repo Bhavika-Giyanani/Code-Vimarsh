@@ -6,65 +6,75 @@
 
 @layer base {
   :root {
-    /* Code Vimarsh Color Palette */
-    --deep-navy: 200 100% 9%;
-    --navy: 200 100% 18%;
-    --steel-blue: 220 45% 31%;
-    --purple: 296 9% 44%;
-    --magenta: 328 41% 53%;
-    --coral: 1 100% 69%;
-    --orange: 24 100% 60%;
-    --amber: 38 100% 50%;
-    --gold: 38 100% 75%;
+    /* Code Vimarsh New Color Palette - Black, White, Orange */
+    --black: 0 0% 0%;
+    --white: 0 0% 100%;
+    --orange-primary: 32 100% 54%;
+    --orange-light: 32 100% 65%;
+    --orange-dark: 32 100% 45%;
+    --gray-900: 0 0% 8%;
+    --gray-800: 0 0% 12%;
+    --gray-700: 0 0% 18%;
+    --gray-600: 0 0% 25%;
+    --gray-500: 0 0% 40%;
+    --gray-400: 0 0% 60%;
+    --gray-300: 0 0% 80%;
+    --gray-200: 0 0% 90%;
+    --gray-100: 0 0% 96%;
     
     /* Semantic tokens */
-    --background: 200 100% 9%;
-    --foreground: 38 100% 95%;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
 
-    --card: 200 100% 14%;
-    --card-foreground: 38 100% 95%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 200 100% 14%;
-    --popover-foreground: 38 100% 95%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 1 100% 69%;
-    --primary-foreground: 200 100% 9%;
+    --primary: 32 100% 54%;
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 328 41% 53%;
+    --secondary: 0 0% 12%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 220 45% 31%;
-    --muted-foreground: 38 100% 85%;
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 60%;
 
-    --accent: 38 100% 50%;
-    --accent-foreground: 200 100% 9%;
+    --accent: 32 100% 65%;
+    --accent-foreground: 0 0% 0%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 45% 25%;
-    --input: 220 45% 25%;
-    --ring: 1 100% 69%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 32 100% 54%;
 
     --radius: 0.75rem;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(1 100% 69%), hsl(24 100% 60%));
-    --gradient-secondary: linear-gradient(135deg, hsl(328 41% 53%), hsl(296 9% 44%));
-    --gradient-accent: linear-gradient(135deg, hsl(38 100% 50%), hsl(38 100% 75%));
-    --gradient-dark: linear-gradient(180deg, hsl(200 100% 9%), hsl(200 100% 18%));
-    --gradient-glow: radial-gradient(ellipse at center, hsl(328 41% 53% / 0.15), transparent 70%);
+    --gradient-primary: linear-gradient(135deg, hsl(32 100% 54%), hsl(32 100% 65%));
+    --gradient-secondary: linear-gradient(135deg, hsl(0 0% 12%), hsl(0 0% 18%));
+    --gradient-accent: linear-gradient(135deg, hsl(32 100% 45%), hsl(32 100% 65%));
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 0%), hsl(0 0% 8%));
+    --gradient-glow: radial-gradient(ellipse at center, hsl(32 100% 54% / 0.15), transparent 70%);
+    --gradient-orange: linear-gradient(135deg, hsl(32 100% 54%), hsl(25 100% 50%));
 
     /* Shadows */
-    --shadow-glow: 0 0 40px hsl(1 100% 69% / 0.3);
-    --shadow-card: 0 10px 40px -10px hsl(200 100% 5% / 0.5);
-    --shadow-elevated: 0 20px 60px -15px hsl(200 100% 5% / 0.7);
+    --shadow-glow: 0 0 40px hsl(32 100% 54% / 0.3);
+    --shadow-card: 0 10px 40px -10px hsl(0 0% 0% / 0.5);
+    --shadow-elevated: 0 20px 60px -15px hsl(0 0% 0% / 0.7);
   }
 }
 
 @layer base {
   * {
     @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
@@ -110,12 +120,16 @@
     background-image: var(--gradient-dark);
   }
 
+  .bg-gradient-orange {
+    background-image: var(--gradient-orange);
+  }
+
   .glow-primary {
     box-shadow: var(--shadow-glow);
   }
 
   .glow-text {
-    text-shadow: 0 0 40px hsl(1 100% 69% / 0.5);
+    text-shadow: 0 0 40px hsl(32 100% 54% / 0.5);
   }
 
   .card-elevated {
