@@ -151,7 +151,7 @@ const Home = () => {
                 <Sparkles className="w-4 h-4 text-primary" />
               </motion.div>
               <span className="text-sm font-medium text-muted-foreground">
-                Where Ideas Transform Into Reality
+                {home.hero.badge}
               </span>
             </motion.div>
 

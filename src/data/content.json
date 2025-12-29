@@ -14,8 +14,9 @@
   },
   "home": {
     "hero": {
+      "badge": "// Inspire. Create. Code.",
       "title": "Code Vimarsh",
-      "subtitle": "Where Ideas Transform Into Reality",
+      "subtitle": "Beyond Syntax, Into Insight",
       "description": "A thriving community of passionate developers, innovators, and problem-solvers. We believe in learning together, building together, and growing together.",
       "cta": {
         "primary": "Join Our Community",
@@ -29,7 +30,7 @@
       "stats": [
         { "value": "200+", "label": "Active Members" },
         { "value": "50+", "label": "Events Hosted" },
-        { "value": "15+", "label": "Projects Built" },
+        { "value": "100+", "label": "Hours of Peer Learning" },
         { "value": "5+", "label": "Years Strong" }
       ]
     },
@@ -70,16 +71,16 @@
       {
         "id": 1,
         "title": "Web Development Bootcamp",
-        "date": "January 15, 2025",
+        "date": "January 15, 2026",
         "time": "10:00 AM - 4:00 PM",
         "description": "An intensive workshop covering modern web technologies including React, Node.js, and MongoDB. Perfect for beginners looking to build their first full-stack application.",
         "type": "Workshop",
-        "location": "Tech Lab 101"
+        "location": "Core Computing Lab 1st Floor"
       },
       {
         "id": 2,
-        "title": "Code Sprint 2025",
-        "date": "February 8-9, 2025",
+        "title": "Code Sprint 2026",
+        "date": "February 8-9, 2026",
         "time": "24 Hours",
         "description": "Our flagship hackathon where teams compete to build innovative solutions for real-world problems. Amazing prizes and networking opportunities await!",
         "type": "Hackathon",
@@ -88,16 +89,16 @@
       {
         "id": 3,
         "title": "AI/ML Workshop Series",
-        "date": "February 22, 2025",
+        "date": "February 22, 2026",
         "time": "2:00 PM - 6:00 PM",
         "description": "Dive into the world of Artificial Intelligence and Machine Learning. Learn to build intelligent systems using Python, TensorFlow, and PyTorch.",
         "type": "Workshop",
-        "location": "Innovation Hub"
+        "location": "Seminar Hall"
       },
       {
         "id": 4,
         "title": "Open Source Contribution Day",
-        "date": "March 5, 2025",
+        "date": "March 5, 2026",
         "time": "11:00 AM - 5:00 PM",
         "description": "Learn how to contribute to open source projects. We'll guide you through your first PR and help you become part of the global developer community.",
         "type": "Community",
@@ -111,49 +112,42 @@
     "members": [
       {
         "id": 1,
-        "name": "Arjun Sharma",
+        "image": "/krupal.png",
+        "name": "Krupal Patel",
         "role": "President",
         "bio": "Full-stack developer with a passion for building scalable applications",
         "github": "https://github.com",
-        "linkedin": "https://linkedin.com"
+        "linkedin": "https://www.linkedin.com/in/krupal-patel-7a0956241/"
       },
       {
         "id": 2,
-        "name": "Priya Patel",
-        "role": "Vice President",
-        "bio": "Machine learning enthusiast focused on NLP and computer vision",
+        "image": "/jay.png",
+        "name": "Jay Prajapati",
+        "role": "Seceretary",
         "github": "https://github.com",
-        "linkedin": "https://linkedin.com"
+        "linkedin": "https://www.linkedin.com/in/jay-prajapati-853579246/"
       },
       {
         "id": 3,
-        "name": "Rahul Verma",
-        "role": "Technical Lead",
-        "bio": "Backend specialist with expertise in cloud architecture and DevOps",
+        "image":"/mihir.png",
+        "name": "Mihir Bhavsar",
+        "role": "Graphic Designer",
         "github": "https://github.com",
-        "linkedin": "https://linkedin.com"
+        "linkedin": "https://www.linkedin.com/in/mihirbhavsar3102/"
       },
       {
         "id": 4,
-        "name": "Sneha Gupta",
-        "role": "Events Coordinator",
-        "bio": "Creative problem solver who loves organizing impactful tech events",
+        "image": "/shivam.png",
+        "name": "Shivam Parmar",
+        "role": "Committee Member",
         "github": "https://github.com",
-        "linkedin": "https://linkedin.com"
+        "linkedin": "https://www.linkedin.com/in/shivam-parmar007/"
       },
       {
         "id": 5,
-        "name": "Vikram Singh",
-        "role": "Web Lead",
-        "bio": "Frontend developer crafting beautiful and accessible user experiences",
-        "github": "https://github.com",
-        "linkedin": "https://linkedin.com"
-      },
-      {
-        "id": 6,
-        "name": "Ananya Reddy",
-        "role": "Community Manager",
-        "bio": "Building bridges between developers and fostering inclusive communities",
+        "image":"/yash.png",
+        "name": "Yash Solanki",
+        "role": "Committee Member",
         "github": "https://github.com",
         "linkedin": "https://linkedin.com"
       }
@@ -164,11 +158,17 @@
     "tagline": "Inspire. Create. Code.",
     "description": "A community of developers building the future, one line of code at a time.",
     "socials": [
-      { "platform": "GitHub", "url": "https://github.com" },
-      { "platform": "LinkedIn", "url": "https://linkedin.com" },
-      { "platform": "Instagram", "url": "https://instagram.com" },
+      { "platform": "GitHub", "url": "https://github.com/code-vimarsh" },
+      {
+        "platform": "LinkedIn",
+        "url": "https://www.linkedin.com/company/code-vimarsh"
+      },
+      {
+        "platform": "Instagram",
+        "url": "https://www.instagram.com/code_vimarsh/"
+      },
       { "platform": "Discord", "url": "https://discord.com" }
     ],
-    "copyright": "© 2025 Code Vimarsh. All rights reserved."
+    "copyright": "© 2026 Code Vimarsh. All rights reserved."
   }
 }
