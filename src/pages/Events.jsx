@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import EventCard from '../components/EventCard';
+import FormModal from '../components/FormModal';
 import content from '../data/content.json';
 
 const Events = () => {
   const { events } = content;
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -26,7 +29,7 @@ const Events = () => {
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
-          className="absolute bottom-20 -right-20 w-[500px] h-[500px] rounded-full bg-secondary/10 blur-3xl"
+          className="absolute bottom-20 -right-20 w-[500px] h-[500px] rounded-full bg-accent/10 blur-3xl"
           animate={{
             x: [0, -50, 0],
             opacity: [0.3, 0.5, 0.3],
@@ -68,7 +71,12 @@ const Events = () => {
           animate="visible"
         >
           {events.items.map((event, index) => (
-            <EventCard key={event.id} event={event} index={index} />
+            <EventCard 
+              key={event.id} 
+              event={event} 
+              index={index}
+              onRegister={() => setSelectedEvent(event)}
+            />
           ))}
         </motion.div>
 
@@ -86,6 +94,14 @@ const Events = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Event Registration Modal */}
+      <FormModal
+        isOpen={!!selectedEvent}
+        onClose={() => setSelectedEvent(null)}
+        type="event-register"
+        eventTitle={selectedEvent?.title || ''}
+      />
     </main>
   );
 };

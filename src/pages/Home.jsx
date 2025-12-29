@@ -1,12 +1,15 @@
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Code, Users, Rocket, Globe, ChevronDown, Sparkles } from 'lucide-react';
 import content from '../data/content.json';
+import FormModal from '../components/FormModal';
 
 const Home = () => {
   const { home } = content;
   const heroRef = useRef(null);
+  const [showJoinModal, setShowJoinModal] = useState(false);
+  
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ['start start', 'end start']
@@ -59,7 +62,7 @@ const Home = () => {
             transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
           />
           <motion.div
-            className="absolute bottom-20 right-10 w-[500px] h-[500px] rounded-full bg-secondary/10 blur-3xl"
+            className="absolute bottom-20 right-10 w-[500px] h-[500px] rounded-full bg-accent/10 blur-3xl"
             animate={{
               x: [0, -80, 0],
               y: [0, -40, 0],
@@ -67,7 +70,7 @@ const Home = () => {
             transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
           />
           <motion.div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-accent/5 blur-3xl"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/5 blur-3xl"
             animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
             transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
           />
@@ -98,7 +101,7 @@ const Home = () => {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/20 mb-8"
               variants={itemVariants}
             >
-              <Sparkles className="w-4 h-4 text-accent" />
+              <Sparkles className="w-4 h-4 text-primary" />
               <span className="text-sm font-medium text-muted-foreground">
                 Where Ideas Transform Into Reality
               </span>
@@ -136,6 +139,7 @@ const Home = () => {
               variants={itemVariants}
             >
               <motion.button
+                onClick={() => setShowJoinModal(true)}
                 className="px-8 py-4 rounded-full bg-gradient-primary text-primary-foreground font-semibold text-lg glow-primary"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -162,7 +166,7 @@ const Home = () => {
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-3 h-3 rounded-full bg-primary" />
                   <div className="w-3 h-3 rounded-full bg-accent" />
-                  <div className="w-3 h-3 rounded-full bg-secondary" />
+                  <div className="w-3 h-3 rounded-full bg-muted" />
                 </div>
                 <pre className="text-sm md:text-base font-mono text-muted-foreground overflow-x-auto">
                   <code className="whitespace-pre">
@@ -175,22 +179,22 @@ const Home = () => {
                         transition={{ delay: 1 + i * 0.1 }}
                       >
                         {line.includes('codeVimarsh') && (
-                          <span className="text-accent">{line}</span>
-                        )}
-                        {line.includes('passion') && (
                           <span className="text-primary">{line}</span>
                         )}
+                        {line.includes('passion') && (
+                          <span className="text-accent">{line}</span>
+                        )}
                         {line.includes('members') && (
-                          <span className="text-secondary">{line}</span>
+                          <span className="text-foreground">{line}</span>
                         )}
                         {line.includes('mission') && (
-                          <span className="text-gold">{line}</span>
+                          <span className="text-primary">{line}</span>
                         )}
                         {line.includes('build') && (
-                          <span className="text-coral">{line}</span>
+                          <span className="text-accent">{line}</span>
                         )}
                         {line.includes('return') && (
-                          <span className="text-magenta">{line}</span>
+                          <span className="text-foreground">{line}</span>
                         )}
                         {!line.includes('codeVimarsh') && !line.includes('passion') && !line.includes('members') && !line.includes('mission') && !line.includes('build') && !line.includes('return') && (
                           <span>{line}</span>
@@ -273,11 +277,11 @@ const Home = () => {
       </section>
 
       {/* Mission Section */}
-      <section className="py-24 md:py-32 relative bg-navy">
+      <section className="py-24 md:py-32 relative bg-secondary">
         {/* Background decoration */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/2 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl" />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -337,7 +341,7 @@ const Home = () => {
       <section className="py-24 md:py-32 relative" id="join">
         <div className="container mx-auto px-4">
           <motion.div
-            className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/20 via-card to-secondary/20 border border-border/50 p-12 md:p-16 text-center"
+            className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/20 via-card to-accent/10 border border-border/50 p-12 md:p-16 text-center"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -368,6 +372,7 @@ const Home = () => {
                 Join Code Vimarsh today and become part of a community that's shaping the future of technology.
               </motion.p>
               <motion.button
+                onClick={() => setShowJoinModal(true)}
                 className="px-10 py-5 rounded-full bg-gradient-primary text-primary-foreground font-bold text-lg glow-primary"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -378,6 +383,13 @@ const Home = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Join Club Modal */}
+      <FormModal
+        isOpen={showJoinModal}
+        onClose={() => setShowJoinModal(false)}
+        type="join-club"
+      />
     </main>
   );
 };

@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import TeamCard from '../components/TeamCard';
+import FormModal from '../components/FormModal';
 import content from '../data/content.json';
 
 const Team = () => {
   const { team } = content;
+  const [showJoinTeamModal, setShowJoinTeamModal] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -18,7 +21,7 @@ const Team = () => {
       {/* Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute top-20 right-0 w-[400px] h-[400px] rounded-full bg-accent/10 blur-3xl"
+          className="absolute top-20 right-0 w-[400px] h-[400px] rounded-full bg-primary/10 blur-3xl"
           animate={{
             y: [0, 50, 0],
             opacity: [0.2, 0.4, 0.2],
@@ -26,7 +29,7 @@ const Team = () => {
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
-          className="absolute bottom-40 left-0 w-96 h-96 rounded-full bg-primary/10 blur-3xl"
+          className="absolute bottom-40 left-0 w-96 h-96 rounded-full bg-accent/10 blur-3xl"
           animate={{
             y: [0, -30, 0],
             opacity: [0.3, 0.5, 0.3],
@@ -34,7 +37,7 @@ const Team = () => {
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-secondary/5 blur-3xl"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl"
           animate={{ scale: [1, 1.2, 1] }}
           transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
         />
@@ -49,7 +52,7 @@ const Team = () => {
           transition={{ duration: 0.6 }}
         >
           <motion.span
-            className="inline-block px-4 py-2 rounded-full glass border border-secondary/20 text-sm font-medium text-muted-foreground mb-6"
+            className="inline-block px-4 py-2 rounded-full glass border border-primary/20 text-sm font-medium text-muted-foreground mb-6"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
@@ -58,7 +61,7 @@ const Team = () => {
           </motion.span>
           
           <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-4">
-            <span className="text-gradient-secondary">{team.title}</span>
+            <span className="text-gradient">{team.title}</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             {team.subtitle}
@@ -92,15 +95,23 @@ const Team = () => {
               We're always looking for passionate individuals to join our community.
             </p>
             <motion.button
-              className="px-8 py-3 rounded-full bg-gradient-secondary text-secondary-foreground font-semibold"
+              onClick={() => setShowJoinTeamModal(true)}
+              className="px-8 py-3 rounded-full bg-gradient-primary text-primary-foreground font-semibold glow-primary"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Get In Touch
+              Apply to Join Team
             </motion.button>
           </div>
         </motion.div>
       </div>
+
+      {/* Join Team Modal */}
+      <FormModal
+        isOpen={showJoinTeamModal}
+        onClose={() => setShowJoinTeamModal(false)}
+        type="join-team"
+      />
     </main>
   );
 };

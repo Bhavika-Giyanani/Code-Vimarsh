@@ -30,15 +30,15 @@ const TeamCard = ({ member, index }) => {
     >
       <div className="relative bg-card border border-border/50 rounded-2xl overflow-hidden card-elevated hover:border-primary/30 transition-all duration-500">
         {/* Gradient background on hover */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
         {/* Profile image area */}
-        <div className="relative h-48 bg-gradient-to-br from-navy to-steel overflow-hidden">
+        <div className="relative h-48 bg-gradient-to-br from-secondary to-muted overflow-hidden">
           {/* Abstract pattern background */}
           <div className="absolute inset-0 opacity-20">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 border-2 border-primary/30 rounded-full" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border border-secondary/20 rounded-full" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 border border-accent/10 rounded-full" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border border-accent/20 rounded-full" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 border border-primary/10 rounded-full" />
           </div>
           
           {/* Avatar placeholder */}
@@ -47,7 +47,7 @@ const TeamCard = ({ member, index }) => {
             whileHover="hover"
           >
             <motion.div
-              className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center"
+              className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center"
               variants={imageVariants}
             >
               <User className="w-12 h-12 text-muted-foreground" />
