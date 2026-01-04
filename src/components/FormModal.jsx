@@ -1,51 +1,85 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X, Send, User, Mail, Phone, MessageSquare, GraduationCap, Code, Calendar } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  X,
+  Send,
+  User,
+  Mail,
+  Phone,
+  MessageSquare,
+  GraduationCap,
+  Code,
+  Calendar,
+} from "lucide-react";
 
-const FormModal = ({ isOpen, onClose, type, eventTitle = '' }) => {
+const FormModal = ({ isOpen, onClose, type, eventTitle = "" }) => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    year: '',
-    branch: '',
-    skills: '',
-    experience: '',
-    motivation: '',
-    role: '',
-    portfolio: '',
-    github: '',
+    name: "",
+    email: "",
+    phone: "",
+    year: "",
+    branch: "",
+    skills: "",
+    experience: "",
+    motivation: "",
+    role: "",
+    portfolio: "",
+    github: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
   const formConfig = {
-    'join-club': {
-      title: 'Join Code Vimarsh',
-      subtitle: 'Become a part of our coding community',
-      fields: ['name', 'email', 'phone', 'year', 'branch', 'motivation'],
-      storageKey: 'member_applications',
+    "join-club": {
+      title: "Join Code Vimarsh",
+      subtitle: "Become a part of our coding community",
+      fields: ["name", "email", "phone", "year", "branch", "motivation"],
+      storageKey: "member_applications",
     },
-    'join-team': {
-      title: 'Join Our Team',
-      subtitle: 'Help us build something amazing',
-      fields: ['name', 'email', 'phone', 'year', 'branch', 'role', 'skills', 'experience', 'portfolio', 'github'],
-      storageKey: 'team_applications',
+    "join-team": {
+      title: "Join Our Team",
+      subtitle: "Help us build something amazing",
+      fields: [
+        "name",
+        "email",
+        "phone",
+        "year",
+        "branch",
+        "role",
+        "skills",
+        "experience",
+        "portfolio",
+        "github",
+      ],
+      storageKey: "team_applications",
     },
-    'event-register': {
+    "event-register": {
       title: `Register for ${eventTitle}`,
-      subtitle: 'Secure your spot now',
-      fields: ['name', 'email', 'phone', 'year', 'branch'],
-      storageKey: 'event_registrations',
+      subtitle: "Secure your spot now",
+      fields: ["name", "email", "phone", "year", "branch"],
+      storageKey: "event_registrations",
     },
   };
 
-  const config = formConfig[type] || formConfig['join-club'];
+  const config = formConfig[type] || formConfig["join-club"];
 
   const handleChange = (e) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -54,14 +88,16 @@ const FormModal = ({ isOpen, onClose, type, eventTitle = '' }) => {
     setIsSubmitting(true);
 
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     // Store in localStorage
-    const existingData = JSON.parse(localStorage.getItem(config.storageKey) || '[]');
+    const existingData = JSON.parse(
+      localStorage.getItem(config.storageKey) || "[]"
+    );
     const newEntry = {
       ...formData,
       submittedAt: new Date().toISOString(),
-      eventTitle: type === 'event-register' ? eventTitle : undefined,
+      eventTitle: type === "event-register" ? eventTitle : undefined,
     };
     existingData.push(newEntry);
     localStorage.setItem(config.storageKey, JSON.stringify(existingData));
@@ -73,17 +109,17 @@ const FormModal = ({ isOpen, onClose, type, eventTitle = '' }) => {
       onClose();
       setIsSuccess(false);
       setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        year: '',
-        branch: '',
-        skills: '',
-        experience: '',
-        motivation: '',
-        role: '',
-        portfolio: '',
-        github: '',
+        name: "",
+        email: "",
+        phone: "",
+        year: "",
+        branch: "",
+        skills: "",
+        experience: "",
+        motivation: "",
+        role: "",
+        portfolio: "",
+        github: "",
       });
     }, 2000);
   };
@@ -210,7 +246,8 @@ const FormModal = ({ isOpen, onClose, type, eventTitle = '' }) => {
     motivation: (
       <div key="motivation" className="space-y-2">
         <label className="text-sm font-medium text-foreground flex items-center gap-2">
-          <MessageSquare className="w-4 h-4 text-primary" /> Why do you want to join?
+          <MessageSquare className="w-4 h-4 text-primary" /> Why do you want to
+          join?
         </label>
         <textarea
           name="motivation"
@@ -248,7 +285,9 @@ const FormModal = ({ isOpen, onClose, type, eventTitle = '' }) => {
     ),
     portfolio: (
       <div key="portfolio" className="space-y-2">
-        <label className="text-sm font-medium text-foreground">Portfolio URL (optional)</label>
+        <label className="text-sm font-medium text-foreground">
+          Portfolio URL (optional)
+        </label>
         <input
           type="url"
           name="portfolio"
@@ -261,7 +300,9 @@ const FormModal = ({ isOpen, onClose, type, eventTitle = '' }) => {
     ),
     github: (
       <div key="github" className="space-y-2">
-        <label className="text-sm font-medium text-foreground">GitHub Profile</label>
+        <label className="text-sm font-medium text-foreground">
+          GitHub Profile
+        </label>
         <input
           type="url"
           name="github"
@@ -278,14 +319,14 @@ const FormModal = ({ isOpen, onClose, type, eventTitle = '' }) => {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
           {/* Backdrop */}
           <motion.div
-            className="absolute inset-0 bg-background/80 backdrop-blur-sm"
+            className="fixed inset-0 bg-background/80 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -294,7 +335,7 @@ const FormModal = ({ isOpen, onClose, type, eventTitle = '' }) => {
 
           {/* Modal */}
           <motion.div
-            className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-card border border-border rounded-2xl shadow-2xl"
+            className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-card border border-border rounded-2xl shadow-2xl my-auto"
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -320,23 +361,29 @@ const FormModal = ({ isOpen, onClose, type, eventTitle = '' }) => {
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      transition={{ delay: 0.2, type: 'spring' }}
+                      transition={{ delay: 0.2, type: "spring" }}
                     >
                       <Send className="w-10 h-10 text-primary" />
                     </motion.div>
                   </div>
-                  <h3 className="text-2xl font-bold text-foreground mb-2">Submitted Successfully!</h3>
-                  <p className="text-muted-foreground">We'll get back to you soon.</p>
+                  <h3 className="text-2xl font-bold text-foreground mb-2">
+                    Submitted Successfully!
+                  </h3>
+                  <p className="text-muted-foreground">
+                    We'll get back to you soon.
+                  </p>
                 </motion.div>
               ) : (
                 <>
                   <div className="text-center mb-8">
-                    <h2 className="text-2xl md:text-3xl font-bold text-gradient mb-2">{config.title}</h2>
+                    <h2 className="text-2xl md:text-3xl font-bold text-gradient mb-2">
+                      {config.title}
+                    </h2>
                     <p className="text-muted-foreground">{config.subtitle}</p>
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-4">
-                    {config.fields.map(field => fieldComponents[field])}
+                    {config.fields.map((field) => fieldComponents[field])}
 
                     <motion.button
                       type="submit"
@@ -349,7 +396,11 @@ const FormModal = ({ isOpen, onClose, type, eventTitle = '' }) => {
                         <motion.div
                           className="w-5 h-5 border-2 border-primary-foreground border-t-transparent rounded-full"
                           animate={{ rotate: 360 }}
-                          transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                          transition={{
+                            duration: 1,
+                            repeat: Infinity,
+                            ease: "linear",
+                          }}
                         />
                       ) : (
                         <>
