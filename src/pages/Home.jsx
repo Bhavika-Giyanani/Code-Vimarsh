@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
@@ -16,15 +16,21 @@ const Home = () => {
   const { home } = content;
   const heroRef = useRef(null);
   const [showJoinModal, setShowJoinModal] = useState(false);
+  const [isReady, setIsReady] = useState(false);
+
+  // Ensure animations are visible after splash screen
+  useEffect(() => {
+    setIsReady(true);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
-    offset: ["start start", "end start"],
+    offset: ["start start", "end center"],
   });
 
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.9]);
-  const heroY = useTransform(scrollYProgress, [0, 0.5], [0, 100]);
+  // Softer scroll transforms to reduce jitter
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.3]);
+  const heroY = useTransform(scrollYProgress, [0, 0.8], [0, 50]);
 
   const icons = {
     code: Code,
@@ -37,16 +43,16 @@ const Home = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.15, delayChildren: 0.3 },
+      transition: { staggerChildren: 0.08, delayChildren: 0.2 },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
+      transition: { duration: 0.5, ease: "easeOut" },
     },
   };
 
@@ -63,23 +69,23 @@ const Home = () => {
           <motion.div
             className="absolute top-20 left-10 w-96 h-96 rounded-full bg-primary/10 blur-3xl"
             animate={{
-              x: [0, 100, 0],
-              y: [0, 50, 0],
+              x: [0, 30, 0],
+              y: [0, 20, 0],
             }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
           />
           <motion.div
             className="absolute bottom-20 right-10 w-[500px] h-[500px] rounded-full bg-accent/10 blur-3xl"
             animate={{
-              x: [0, -80, 0],
-              y: [0, -40, 0],
+              x: [0, -25, 0],
+              y: [0, -15, 0],
             }}
-            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
           />
           <motion.div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/5 blur-3xl"
-            animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.35, 0.3] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
           />
 
           {/* Grid pattern */}
@@ -96,12 +102,12 @@ const Home = () => {
         {/* Hero content */}
         <motion.div
           className="relative z-10 container mx-auto px-4 text-center"
-          style={{ opacity: heroOpacity, scale: heroScale, y: heroY }}
+          style={{ opacity: heroOpacity, y: heroY }}
         >
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
+            animate={isReady ? "visible" : "hidden"}
           >
             {/* Badge */}
             <motion.div
@@ -148,16 +154,16 @@ const Home = () => {
               <motion.button
                 onClick={() => setShowJoinModal(true)}
                 className="px-8 py-4 rounded-full bg-gradient-primary text-primary-foreground text-lg glow-primary font-extrabold"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.96 }}
               >
                 {home.hero.cta.primary}
               </motion.button>
               <Link to="/events">
                 <motion.button
                   className="px-8 py-4 rounded-full border border-border bg-card/50 text-foreground font-semibold text-lg hover:border-primary/50 transition-colors"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.96 }}
                 >
                   {home.hero.cta.secondary}
                 </motion.button>
@@ -220,8 +226,8 @@ const Home = () => {
           {/* Scroll indicator */}
           <motion.div
             className="absolute bottom-10 left-1/2 -translate-x-1/2"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
           >
             <ChevronDown className="w-8 h-8 text-muted-foreground" />
           </motion.div>
@@ -233,10 +239,10 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <motion.div
             className="text-center mb-16"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
               {home.about.title}
@@ -251,7 +257,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
             {home.about.content}
           </motion.p>
@@ -262,17 +268,17 @@ const Home = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
             {home.about.stats.map((stat, i) => (
               <motion.div
                 key={stat.label}
                 className="text-center p-6 glass rounded-2xl"
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.1 * i }}
-                whileHover={{ scale: 1.05, y: -5 }}
+                transition={{ delay: 0.05 * i, duration: 0.4 }}
+                whileHover={{ scale: 1.08, y: -4 }}
               >
                 <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">
                   {stat.value}
@@ -297,10 +303,10 @@ const Home = () => {
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             className="text-center mb-16"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
               {home.mission.title}
@@ -314,17 +320,17 @@ const Home = () => {
                 <motion.div
                   key={point.title}
                   className="group relative p-8 bg-card/50 border border-border/50 rounded-2xl hover:border-primary/30 transition-all duration-500"
-                  initial={{ opacity: 0, y: 50 }}
+                  initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.1 * i, duration: 0.6 }}
-                  whileHover={{ y: -10 }}
+                  transition={{ delay: 0.06 * i, duration: 0.4 }}
+                  whileHover={{ y: -8, scale: 1.02 }}
                 >
                   {/* Icon */}
                   <motion.div
                     className="w-14 h-14 rounded-xl bg-gradient-primary flex items-center justify-center mb-6 glow-primary"
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.5 }}
+                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    transition={{ duration: 0.4 }}
                   >
                     {Icon && (
                       <Icon className="w-7 h-7 text-primary-foreground" />
@@ -354,10 +360,10 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <motion.div
             className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/20 via-card to-accent/10 border border-border/50 p-12 md:p-16 text-center"
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
           >
             {/* Background effects */}
             <div className="absolute inset-0 overflow-hidden">
@@ -371,15 +377,16 @@ const Home = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
+                transition={{ duration: 0.4 }}
               >
                 Ready to Start Your Journey?
               </motion.h2>
               <motion.p
                 className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
+                transition={{ delay: 0.08, duration: 0.4 }}
               >
                 Join Code Vimarsh today and become part of a community that's
                 shaping the future of technology.
@@ -387,8 +394,8 @@ const Home = () => {
               <motion.button
                 onClick={() => setShowJoinModal(true)}
                 className="px-10 py-5 rounded-full bg-gradient-primary text-primary-foreground font-bold text-lg glow-primary"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.96 }}
               >
                 Join Now
               </motion.button>
